@@ -21,3 +21,5 @@ which you may change to customize the debug level, precision etc.
 	-- in headers/main.h: ERR_DATATYPE controls the error message if the user gives conflicting datatypes (e.g. hpcalc -i -f)
 	-- in headers/main.h: ERR_CALCTYPE controls the error message if the user gives conflicting calculation types (e.g. hpcalc -i -a -s)
 
+
+If you have questions about git, visit http://lbo.spheniscida.de and the linked doc files.
