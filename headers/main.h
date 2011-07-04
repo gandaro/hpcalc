@@ -7,6 +7,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "error.h"
+# include "help.h"
 # include "std_funcs_hpcalc.h"
 # include <string.h>
 # include "math_hpcalc.h"

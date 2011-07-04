@@ -2,12 +2,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include "headers/math_hpcalc.h"
-# include "headers/help.h"
-
-void printHelp(void)
-{
-	printf(helpstring,ACC);
-}
 
 char* changeCommaToPoint(char *str)
 {

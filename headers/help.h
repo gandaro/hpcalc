@@ -1,1 +1,1 @@
-extern const char helpstring[];
+extern void printHelp(void);

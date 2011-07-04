@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <stdlib.h>
-	
+# include "headers/math_hpcalc.h"
 	
 const char helpstring[] = "hpcalc (hyper precision calc) v0.5beta (base functions work almost perfectly)\n(c) 2011 by Der Messer. License: GNU-GPL 3\n"
 	"hpcalc is a program to calculate with extreme large numbers and extreme precise numbers\n"
@@ -17,3 +17,8 @@ const char helpstring[] = "hpcalc (hyper precision calc) v0.5beta (base function
 	"\n\nExample: to get the solution of 3.4 + 5.4, type\n\thpcalc -f -a 3.4 5.4\n\n"
 	"2nd Example: to get the solution of 24 ^ 12, type\n\thpcalc -i -p 24 12\n\n(If you calculate with integers, it's faster and sometimes more precise)\n"
 	"\nBugs and issues please to <der.messer@web.de>\n\n";
+
+void printHelp(void)
+{
+	printf(helpstring,ACC);
+}
