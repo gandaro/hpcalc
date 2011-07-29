@@ -6,6 +6,18 @@ int main(int argc, char *argv[])
 	int calctype = 32767;
 	short int i = 0;
 	unsigned long precision = ACC;
+	
+	/*
+	   Short Explanation: Pointers on functions
+
+	   ---
+	   (*ptr)(int a, char b);
+	   ---
+
+	   The first pair of brackets has to be so the C compiler sees that's a pointer to a funtion (second pair of brackets),
+	   and not a function that gives a pointer.
+
+	*/
 
 	// Jump table for integer routines. See description in headers/header_main.h
 	int (*int_funcs[8])(char *astr, char *bstr) = { int_addition, int_subtraction, int_multiplication, int_fdivision, int_pow, int_remainder, int_gcd, int_cdivision };
