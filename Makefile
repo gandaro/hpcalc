@@ -5,6 +5,7 @@ BINARY=hpcalc
 OBJECTFILES=main.o help.o std_funcs_hpcalc.o error.o math_hpcalc.o
 
 clean : $(BINARY)
+	mv $(BINARY) build/
 	rm *.o
 
 $(BINARY) : $(OBJECTFILES)
