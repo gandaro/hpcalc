@@ -10,5 +10,5 @@ clean : $(BINARY)
 $(BINARY) : $(OBJECTFILES)
 	gcc $^ $(FLAGS_FINAL) -o $@
 
-%.o : %.c
+%.o : src/%.c
 	gcc -c $< $(FLAGS) -o $@

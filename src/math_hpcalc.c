@@ -1,7 +1,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <gmp.h>
-# include "headers/math_hpcalc.h"
+# include "../headers/math_hpcalc.h"
 
 int int_addition(char *astr, char *bstr)
 {

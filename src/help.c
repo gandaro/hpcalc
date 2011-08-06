@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <stdlib.h>
-# include "headers/math_hpcalc.h"
+# include "../headers/math_hpcalc.h"
 	
 const char *helpstring = "hpcalc (hyper precision calc) v0.5beta (base functions work almost perfectly)\n(c) 2011 by Der Messer. License: GNU-GPL 3\n"
 	"hpcalc is a program to calculate with extreme large numbers and extreme precise numbers\n"

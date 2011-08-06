@@ -1,7 +1,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include "headers/math_hpcalc.h"
+# include "../headers/math_hpcalc.h"
 
 char* changeCommaToPoint(char *str)
 {
