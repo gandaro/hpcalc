@@ -5,21 +5,45 @@ If you want to change hpcalc, you may do it how you want to and in line with GNU
 so I can study it and transfer it to the original hpcalc (keep in mind, you have to license your changes by gpl). Of course you don't have to send it me, but, as said, it's very
 nice to do it. Thank you!
 
-Please send bugs, issues, tips, tricks and improved versions to <der.messer@web.de>.
+Please send bugs, issues, tips, tricks and improved versions to <der-messer@gmx.de>.
 
 == Before compiling ==
 
-make sure, that the headers of libgmp are installed on your system (e.g. libgmp-dev)
+Read BUILD.
 
-Some tips for compiling hpcalc:
-
-The makefile compiles the source code efficiently into a single ELF file (architecture depending of the gcc version). There are some preprocessor constants
-which you may change to customize the debug level, precision etc.
-
-	-- in headers/math_hpcalc.h: ACC (for ACCuracy) defines the default accuracy for GMP in bits. Can be dynamically changed with the option '-b'.
-	-- in headers/main.h: DEBUG controls if hpcalc prints more or less debug information. Of course you may insert your own debug routines.
-	-- in headers/main.h: ERR_DATATYPE controls the error message if the user gives conflicting datatypes (e.g. hpcalc -i -f)
-	-- in headers/main.h: ERR_CALCTYPE controls the error message if the user gives conflicting calculation types (e.g. hpcalc -i -a -s)
+===== HELP FROM THE PROGRAM =====
 
 
-If you have questions about git, visit http://lbo.spheniscida.de and the linked doc files.
+hpcalc (hyper precision calc) v0.5beta (base functions work almost perfectly)
+(c) 2011 by Der Messer. License: GNU-GPL 3
+hpcalc is a program to calculate with extreme large numbers and extreme precise numbers
+hpcalc uses a high precision for floatpoint calculation while the length of integer numbers is only limited by your RAM
+
+Data types (one, either -i or -f, must be specified):
+	-i	Integer numbers. They can be very, very large (a few million digits)
+	-f	Float numbers. hpcalc uses in this version of hpcalc by default a precision of 8192 bits for this numbers. You may use both , and . as decimal point
+
+Calculation options: (You can only call 1 calculation option at once, if you do not so, you'll get an error)
+	-a	Addition
+	-s	Subtraction
+	-m	Multiplication
+	-d	Division (Floor round when using integers (25 / 4 == 6))
+	-c	Division, but with ceiling round ( 25 / 4 == 7 ) - only available for integers
+	-r	remainder (also called "modulo") - only available for integers
+	-p	Power
+	-g	Greatest Common Divisor (GCD) - only available for integers
+
+	-b	With argument -b you may set the at-least-precision higher than 8192 bits (ex.: hpcalc -f -b 31415 -a 3.4 5.645). It's only expedient when using floats.
+		You recognize the necessity to increase the precision when there are many 0 at the end of the result or you recognize that there are too few digits
+
+
+Example: to get the solution of 3.4 + 5.4, type
+	hpcalc -f -a 3.4 5.4
+
+2nd Example: to get the solution of 24 ^ 12, type
+	hpcalc -i -p 24 12
+
+(If you calculate with integers, it's faster and sometimes more precise)
+
+Bugs and issues please to <der.messer@web.de>
+

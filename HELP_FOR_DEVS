@@ -1,3 +1,5 @@
+IMPORTANT: Feel free to send tips, tricks, questions and ideas for improvement to <der-messer@gmx.de>
+
 ### 1. Jump table description for the jump tables in main.c
 
 /*
@@ -25,3 +27,27 @@ Call:
 	Call: (*int_funcs[2])(a,b); == int_addition(a,b);
 */
 
+### 2. How it works
+
+The hub of hpcalc is main() in src/main.c. From this routines, the most important other routines are called, and their return values are given
+to other routines.
+Let's see:
+
+int main(int argc, char *argv[])
+{
+# the routine getopts() is called. getopts() gets the options (via getopt()) from the command line and stores them into a structure getopt_return (why is the structure called how it's called?)
+	// Get the options and arguments and store them in a structure getopt_return (no malloc because only used locally)
+	struct getopt_return *opt_struct = getopts(argc,argv);
+
+# When getopts() has stored the given arguments and options into the structure, give this structure to checkargs(). This routine checks the integrity of the given arguments
+# (so it kills the program if you gave -i -f, which doesn't make sense). For this job, it needs much data, or, better, all data stored in opt_struct.
+	// No if construct because the program gets killed if something's wrong with the arguments
+	checkargs(opt_struct);
+
+# The last function executes the actual calculating routines. It uses the jump table described above, and also needs some data from opt_struct.
+	dispatch(opt_struct->datatype, opt_struct->calctype,argv);
+
+	return(0);
+}
+
+You see, main.c, and in particular, main(), control the entire program by calling big subroutines.
