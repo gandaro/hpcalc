@@ -4,13 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-	// Get the options and arguments and store them in a structure getopt_return (no malloc because only used locally)
-	struct getopt_return *opt_struct = getopts(argc,argv);
-
-	// No if construct because the program gets killed if something's wrong with the arguments
-	checkargs(opt_struct);
-
-	dispatch(opt_struct->datatype, opt_struct->calctype,argv);
+	// Start the program by calling getopts(). getopts() calls the next routine and so on...
+	getopts(argc,argv);
 
 	return(0);
 }

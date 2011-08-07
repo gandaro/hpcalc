@@ -3,7 +3,7 @@
 
 static unsigned long precision = ACC;
 
-struct getopt_return *getopts(int argc, char *argv[])
+void getopts(int argc, char *argv[])
 {
 	char c = 0, datatype = 0;
 	int calctype = 32767;
@@ -83,10 +83,11 @@ struct getopt_return *getopts(int argc, char *argv[])
 	ret->optind = optind;
 	ret->argv = argv;
 
-	return ret;
+	// No if(){}, because hpcalc gets killed if something's wrong with the arguments
+	checkargs(ret);
 }
 
-int checkargs(struct getopt_return *stats)
+void checkargs(struct getopt_return *stats)
 {
 	int i = stats->i;
 	int calctype = stats->calctype;
@@ -126,9 +127,9 @@ int checkargs(struct getopt_return *stats)
 	if ( (datatype == 'f') && (calctype == 6) )
 		error_exit("GCD impossible when using float! Type '-h' for help\n");
 
-
-	// If the arguments passed every check, return SUCCESS
-	return 0;
+	
+	// If everything's OK, dispatch with the jump tables
+	dispatch(datatype,calctype,argv);
 }	
 
 int dispatch(char datatype, int calctype, char **argv)
