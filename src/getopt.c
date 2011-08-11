@@ -144,10 +144,10 @@ int dispatch(char datatype, int calctype, char **argv)
 	// Dispatcher with jumptable
 	if ( datatype == 'i' )
 	{
-		int_funcs[calctype](argv[optind],argv[optind+1]);
+		(*int_funcs[calctype])(argv[optind],argv[optind+1]);
 	} else if ( datatype == 'f' )
 	{
-		float_funcs[calctype](argv[optind],argv[optind+1],precision);
+		(*float_funcs[calctype])(argv[optind],argv[optind+1],precision);
 	}
 
 	return 0;
