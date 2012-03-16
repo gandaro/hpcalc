@@ -4,8 +4,7 @@ FLAGS=-Wall -O3
 BINARY=hpcalc
 OBJECTS=src/error.o src/getopt.o src/help.o src/main.o src/math_hpcalc.o src/std_funcs_hpcalc.o
 
-$(BINARY): main_objs
-	gcc $(FLAGS_FINAL) -o $(BINARY) $(OBJECTS)
+all: $(OBJECTS)
 
-main_objs:
-	make -f src/Makefile
+.c.o:
+	gcc -c $< -o $@
