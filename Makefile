@@ -2,13 +2,10 @@ SHELL=/bin/bash
 FLAGS_FINAL=-lgmp -Wall -O3
 FLAGS=-Wall -O3
 BINARY=hpcalc
+OBJECTS=src/error.o src/getopt.o src/help.o src/main.o src/math_hpcalc.o src/std_funcs_hpcalc.o
 
+$(BINARY): $(OBJECTS)
+	gcc $(FLAGS_FINAL) -o $(BINARY) $(OBJECTS)
 
-all : objects
-	gcc -o build/$(BINARY) $(FLAGS_FINAL) *.o
-
-objects :
-	gcc $(FLAGS) -c src/*.c
-
-clean : 
-	rm *.o
+.c.o:
+	gcc $(FLAGS) -o $@ -c $<
