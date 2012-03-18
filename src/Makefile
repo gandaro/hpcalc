@@ -5,6 +5,6 @@ BINARY=hpcalc
 OBJECTS=src/error.o src/getopt.o src/help.o src/main.o src/math_hpcalc.o src/std_funcs_hpcalc.o
 
 all: $(OBJECTS)
-	cp src/*.o build/
+	mv src/*.o build/
 .c.o:
 	gcc -c $< -o $@
